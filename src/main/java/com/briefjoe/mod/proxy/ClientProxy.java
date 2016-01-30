@@ -1,0 +1,112 @@
+package com.briefjoe.mod.proxy;
+
+import com.briefjoe.mod.init.blocks.BriefjoeBlocks;
+import com.briefjoe.mod.init.items.BriefjoeItems;
+import com.briefjoe.mod.init.tileentity.TileEntityCookieJar;
+import com.briefjoe.mod.init.tileentity.TileEntityDisplayCase;
+import com.briefjoe.mod.init.tileentity.TileEntityHalfTable;
+import com.briefjoe.mod.init.tileentity.TileEntityKeyHolder;
+import com.briefjoe.mod.init.tileentity.TileEntityTable;
+import com.briefjoe.mod.init.tileentity.renderer.CookieRenderer;
+import com.briefjoe.mod.init.tileentity.renderer.DisplayCaseRenderer;
+import com.briefjoe.mod.init.tileentity.renderer.HalfTableRenderer;
+import com.briefjoe.mod.init.tileentity.renderer.KeyHolderRenderer;
+import com.briefjoe.mod.init.tileentity.renderer.TableRenderer;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+public class ClientProxy extends CommonProxy{
+	
+	public static boolean rendering = false;
+	public static Entity renderEntity = null;
+	public static Entity backupEntity = null;
+	
+	@Override
+	public void registerRenders(){
+		BriefjoeItems.registerRenders();
+		BriefjoeBlocks.registerRenders();
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCookieJar.class, new CookieRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKeyHolder.class, new KeyHolderRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTable.class, new TableRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHalfTable.class, new HalfTableRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDisplayCase.class, new DisplayCaseRenderer());
+	}
+	
+	@Override
+	public EntityPlayer getClientPlayer()
+	{
+		return Minecraft.getMinecraft().thePlayer;
+	}
+
+	@Override
+	public boolean isSinglePlayer()
+	{
+		return Minecraft.getMinecraft().isSingleplayer();
+	}
+
+	@Override
+	public boolean isDedicatedServer()
+	{
+		return false;
+	}
+
+	@Override
+	public void preInit()
+	{
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	@SubscribeEvent
+	public void onClientWorldLoad(WorldEvent.Load event)
+	{
+		if (event.world instanceof WorldClient)
+		{
+			
+		}
+	}
+
+	@SubscribeEvent
+	public void onClientWorldUnload(WorldEvent.Unload event)
+	{
+		if (event.world instanceof WorldClient)
+		{
+			
+		}
+	}
+
+
+	@SubscribeEvent
+	public void onPrePlayerRender(RenderPlayerEvent.Pre event)
+	{
+		if(!rendering)
+			return;
+		
+		if(event.entityPlayer == renderEntity)
+		{
+			this.backupEntity = Minecraft.getMinecraft().getRenderManager().livingPlayer;
+			Minecraft.getMinecraft().getRenderManager().livingPlayer = renderEntity;
+		}
+	}
+
+	@SubscribeEvent
+	public void onPostPlayerRender(RenderPlayerEvent.Post event)
+	{
+		if(!rendering)
+			return;
+		
+		if (event.entityPlayer == renderEntity)
+		{
+			Minecraft.getMinecraft().getRenderManager().livingPlayer = backupEntity;
+			renderEntity = null;
+		}
+	}
+}

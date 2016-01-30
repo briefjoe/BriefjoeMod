@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": {"model": "bjm:key_holder"},
+        "facing=south": { "model": "bjm:key_holder", "y": 180},
+        "facing=east":  { "model": "bjm:key_holder", "y": 90},
+        "facing=west":  { "model": "bjm:key_holder", "y": 270}
+    }
+}

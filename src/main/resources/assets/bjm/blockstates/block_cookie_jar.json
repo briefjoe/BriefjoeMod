@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "cookie_count=0": {"model": "bjm:cookie_jar_pre"},
+        "cookie_count=1": {"model": "bjm:cookie_jar_pre"},
+        "cookie_count=2": {"model": "bjm:cookie_jar_pre"},
+        "cookie_count=3": {"model": "bjm:cookie_jar_pre"},
+        "cookie_count=4": {"model": "bjm:cookie_jar_pre"},
+        "cookie_count=5": {"model": "bjm:cookie_jar_pre"},
+		"cookie_count=6": {"model": "bjm:cookie_jar_pre"}
+    }
+}

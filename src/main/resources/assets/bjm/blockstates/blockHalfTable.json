@@ -1,0 +1,8 @@
+{
+"variants": {
+"facing=north": {"model": "bjm:halfTable", "y": 270},
+"facing=south": { "model": "bjm:halfTable", "y": 90},
+"facing=east": { "model": "bjm:halfTable"},
+"facing=west": { "model": "bjm:halfTable", "y": 180}
+}
+}

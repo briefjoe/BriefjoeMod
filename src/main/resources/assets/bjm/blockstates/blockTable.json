@@ -1,0 +1,8 @@
+{
+"variants": {
+"facing=north": {"model": "bjm:blockTable", "y": 270},
+"facing=south": { "model": "bjm:blockTable", "y": 90},
+"facing=east": { "model": "bjm:blockTable"},
+"facing=west": { "model": "bjm:blockTable", "y": 180}
+}
+}

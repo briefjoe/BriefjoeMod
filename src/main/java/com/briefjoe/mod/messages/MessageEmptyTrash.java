@@ -1,0 +1,57 @@
+package com.briefjoe.mod.messages;
+
+import com.briefjoe.mod.init.tileentity.TileEntityTrash;
+
+import io.netty.buffer.ByteBuf;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+//Server Packet
+public class MessageEmptyTrash implements IMessage, IMessageHandler<MessageEmptyTrash, IMessage>
+{
+
+	private int x, y, z;
+
+	public MessageEmptyTrash()
+	{
+	}
+
+	public MessageEmptyTrash(int x, int y, int z)
+	{
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	@Override
+	public void fromBytes(ByteBuf buf)
+	{
+		this.x = buf.readInt();
+		this.y = buf.readInt();
+		this.z = buf.readInt();
+	}
+
+	@Override
+	public void toBytes(ByteBuf buf)
+	{
+		buf.writeInt(x);
+		buf.writeInt(y);
+		buf.writeInt(z);
+	}
+
+	@Override
+	public IMessage onMessage(MessageEmptyTrash message, MessageContext ctx)
+	{
+		TileEntity tile_entity = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(new BlockPos(message.x, message.y, message.z));
+		if (tile_entity instanceof TileEntityTrash)
+		{
+			TileEntityTrash tileEntityTrash = (TileEntityTrash) tile_entity;
+			tileEntityTrash.clear();
+		}
+		ctx.getServerHandler().playerEntity.worldObj.markBlockForUpdate(new BlockPos(message.x, message.y, message.z));
+		return null;
+	}
+}
