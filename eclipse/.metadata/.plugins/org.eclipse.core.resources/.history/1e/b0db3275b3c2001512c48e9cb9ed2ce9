@@ -1,0 +1,74 @@
+package com.briefjoe.mod.init.items;
+
+import com.briefjoe.mod.BriefjoeMod;
+import com.briefjoe.mod.Reference;
+import com.briefjoe.mod.init.blocks.BriefjoeBlocks;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+public class BriefjoeItems {
+	
+	//nether stuff
+	public static Item nether_stick;
+	public static Item netherrite;
+	
+	//block Items
+	public static Item item_log;
+	
+	public static Item itemtrampoline1,itemtrampoline2,itemtrampoline3,itemtrampolineop;
+	
+	public static Item key,key_chain;
+	
+	public static void init(){
+		//nether stuff
+		nether_stick = new ItemNetherStick().setUnlocalizedName("nether_stick").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		netherrite = new Item().setUnlocalizedName("netherrite").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		
+		item_log = new ItemLog(BriefjoeBlocks.log_pile).setUnlocalizedName("item_log").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		
+		itemtrampoline1 = new ItemPlacer(BriefjoeBlocks.blocktrampoline1).setUnlocalizedName("itemtrampoline1").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		itemtrampoline2 = new ItemPlacer(BriefjoeBlocks.blocktrampoline2).setUnlocalizedName("itemtrampoline2").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		itemtrampoline3 = new ItemPlacer(BriefjoeBlocks.blocktrampoline3).setUnlocalizedName("itemtrampoline3").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		itemtrampolineop = new ItemPlacer(BriefjoeBlocks.blocktrampolineop).setUnlocalizedName("itemtrampolineop").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		
+		key = new ItemKey().setUnlocalizedName("key").setCreativeTab(BriefjoeMod.tabBriefjoe);
+		key_chain = new ItemKeyChain();
+	}
+	
+	public static void register(){
+		//nether stuff
+		GameRegistry.registerItem(nether_stick, nether_stick.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(netherrite, netherrite.getUnlocalizedName().substring(5));
+		
+		GameRegistry.registerItem(item_log, item_log.getUnlocalizedName().substring(5));
+		
+		GameRegistry.registerItem(itemtrampoline1, itemtrampoline1.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(itemtrampoline2, itemtrampoline2.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(itemtrampoline3, itemtrampoline3.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(itemtrampolineop, itemtrampolineop.getUnlocalizedName().substring(5));
+		
+		GameRegistry.registerItem(key, key.getUnlocalizedName().substring(5));
+	}
+	
+	public static void registerRenders(){
+		//nether stuff
+		registerRender(nether_stick);
+		registerRender(netherrite);
+		
+		registerRender(item_log);
+		
+		registerRender(itemtrampoline1);
+		registerRender(itemtrampoline2);
+		registerRender(itemtrampoline3);
+		registerRender(itemtrampolineop);
+		
+		registerRender(key);
+	}
+	
+	public static void registerRender(Item item){
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+	}
+}

@@ -1,0 +1,5 @@
+package com.briefjoe.mod.event;
+
+public class KeyEvents {
+
+}

@@ -1,0 +1,6 @@
+{
+"parent": "bjm:block/plate",
+"textures": {
+"1": "blocks/quartz_block_bottom"
+}
+}

@@ -1,0 +1,5 @@
+package com.briefjoe.mod.init.tileentity.renderer;
+
+public class OvenRenderer {
+
+}

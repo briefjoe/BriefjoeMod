@@ -1,0 +1,51 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class EntityCar extends Entity{
+
+	 private boolean isInReverse;
+	    private String entityName;
+	    /** rotational logic matrix */
+	    private static final int[][][] matrix = new int[][][] {{{0, 0, -1}, {0, 0, 1}}, {{ -1, 0, 0}, {1, 0, 0}}, {{ -1, -1, 0}, {1, 0, 0}}, {{ -1, 0, 0}, {1, -1, 0}}, {{0, 0, -1}, {0, -1, 1}}, {{0, -1, -1}, {0, 0, 1}}, {{0, 0, 1}, {1, 0, 0}}, {{0, 0, 1}, { -1, 0, 0}}, {{0, 0, -1}, { -1, 0, 0}}, {{0, 0, -1}, {1, 0, 0}}};
+	    /** appears to be the progress of the turn */
+	    private int turnProgress;
+	    private double carX;
+	    private double carY;
+	    private double carZ;
+	    private double carYaw;
+	    private double carPitch;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityX;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityY;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityZ;
+	    
+	public EntityCar(World worldIn) {
+		super(worldIn);
+	}
+
+	@Override
+	protected void entityInit() {
+		
+		
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+		
+		
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+		
+		
+	}
+
+}

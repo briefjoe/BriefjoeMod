@@ -1,0 +1,6 @@
+{
+"parent": "bjm:block/blocktrash_bin",
+"textures": {
+"0": "blocks/iron_block"
+}
+}

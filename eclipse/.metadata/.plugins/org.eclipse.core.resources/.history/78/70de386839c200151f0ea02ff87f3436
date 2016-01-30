@@ -1,0 +1,31 @@
+package com.briefjoe.mod.init.entity;
+
+import com.briefjoe.mod.BriefjoeMod;
+
+import net.minecraft.entity.EntityList;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+public class BriefjoeEntity {
+	
+	public static void mainRegistry(){
+		registerEntity();
+	}
+	
+	public static void registerEntity(){
+		
+		createEntity(EntityTestCar.class, "TestCar", 0xFFFFFF, 0xFFFFFF);
+		
+	}
+	
+	public static void createEntity(Class entityClass, String entityName, int solidColour, int spotColour){
+		int randomId = EntityRegistry.findGlobalUniqueEntityId();
+		
+		EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomId);
+		EntityRegistry.registerModEntity(entityClass, entityName, randomId, BriefjoeMod.instance, 64, 1, true);
+		createEgg(randomId, solidColour, spotColour);
+	}
+
+	private static void createEgg(int randomId, int solidColour, int spotColour) {
+		EntityList.entityEggs.put(Integer.valueOf(randomId), new EntityList.EntityEggInfo(randomId, solidColour, spotColour));
+	}
+}

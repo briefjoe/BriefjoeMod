@@ -1,0 +1,98 @@
+package com.briefjoe.mod.init.gui;
+
+import java.io.IOException;
+
+import org.lwjgl.input.Keyboard;
+
+import com.briefjoe.mod.init.gui.container.ContainerKeyNamer;
+
+import io.netty.buffer.Unpooled;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.network.play.client.C17PacketCustomPayload;
+import net.minecraft.util.ResourceLocation;
+
+public class GuiKeyNamer extends GuiContainer{
+	
+	private static final ResourceLocation anvilResource = new ResourceLocation("textures/gui/container/anvil.png");
+	private GuiTextField nameField;
+    private InventoryPlayer playerInventory;
+    private ContainerKeyNamer namer;
+    
+	public GuiKeyNamer(Container keyNamer) {
+		super(keyNamer);
+	}
+	
+	public void initGui()
+    {
+        super.initGui();
+        Keyboard.enableRepeatEvents(true);
+        int i = (this.width - this.xSize) / 2;
+        int j = (this.height - this.ySize) / 2;
+        this.nameField = new GuiTextField(0, this.fontRendererObj, i + 62, j + 24, 103, 12);
+        this.nameField.setTextColor(-1);
+        this.nameField.setDisabledTextColour(-1);
+        this.nameField.setEnableBackgroundDrawing(false);
+        this.nameField.setMaxStringLength(40);
+    }
+	
+	public void onGuiClosed()
+    {
+        super.onGuiClosed();
+        Keyboard.enableRepeatEvents(false);
+    }
+
+	protected void keyTyped(char typedChar, int keyCode) throws IOException
+    {
+        if (this.nameField.textboxKeyTyped(typedChar, keyCode))
+        {
+            this.renameItem();
+        }
+        else
+        {
+            super.keyTyped(typedChar, keyCode);
+        }
+    }
+
+    private void renameItem()
+    {
+        String s = this.nameField.getText();
+        Slot slot = this.namer.getSlot(0);
+
+        if (slot != null && slot.getHasStack() && !slot.getStack().hasDisplayName() && s.equals(slot.getStack().getDisplayName()))
+        {
+            s = "";
+        }
+
+        this.namer.updateItemName(s);
+        this.mc.thePlayer.sendQueue.addToSendQueue(new C17PacketCustomPayload("MC|ItemName", (new PacketBuffer(Unpooled.buffer())).writeString(s)));
+    }
+    
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
+    {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        this.nameField.mouseClicked(mouseX, mouseY, mouseButton);
+    }
+
+    /**
+     * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
+     */
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
+    {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        GlStateManager.disableLighting();
+        GlStateManager.disableBlend();
+        this.nameField.drawTextBox();
+    }
+    
+	@Override
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+		
+	}
+	
+}

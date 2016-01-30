@@ -1,0 +1,5 @@
+package com.briefjoe.mod.init.gui.container;
+
+public class ContainerLogPile {
+
+}

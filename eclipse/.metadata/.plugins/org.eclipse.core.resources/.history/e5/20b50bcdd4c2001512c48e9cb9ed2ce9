@@ -1,0 +1,26 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+
+public class EntitySkateboard extends Entity {
+
+	@Override
+	protected void entityInit() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

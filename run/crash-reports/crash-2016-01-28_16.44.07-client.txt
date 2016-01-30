@@ -1,0 +1,121 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 1/28/16 4:44 PM
+Description: Rendering Block Entity
+
+java.lang.ClassCastException: com.briefjoe.mod.init.tileentity.TileEntityHalfTable cannot be cast to com.briefjoe.mod.init.tileentity.TileEntityTable
+	at com.briefjoe.mod.init.tileentity.renderer.HalfTableRenderer.renderTileEntityAt(HalfTableRenderer.java:21)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntityAt(TileEntityRendererDispatcher.java:146)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntity(TileEntityRendererDispatcher.java:126)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:681)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1353)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1266)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1091)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1114)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:376)
+	at net.minecraft.client.main.Main.main(Main.java:117)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.briefjoe.mod.init.tileentity.renderer.HalfTableRenderer.renderTileEntityAt(HalfTableRenderer.java:21)
+
+-- Block Entity Details --
+Details:
+	Name: bjmHalfTable // com.briefjoe.mod.init.tileentity.TileEntityHalfTable
+	Block type: ID #229 (tile.blockHalfTable // com.briefjoe.mod.init.blocks.BlockHalfTable)
+	Block data value: 2 / 0x2 / 0b0010
+	Block location: World: (143,69,70), Chunk: (at 15,4,6 in 8,4; contains blocks 128,0,64 to 143,255,79), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Actual block type: ID #229 (tile.blockHalfTable // com.briefjoe.mod.init.blocks.BlockHalfTable)
+	Actual block data value: 2 / 0x2 / 0b0010
+Stacktrace:
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntityAt(TileEntityRendererDispatcher.java:146)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntity(TileEntityRendererDispatcher.java:126)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:681)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1353)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1266)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player718'/77, l='MpServer', x=143.26, y=69.00, z=71.55]]
+	Chunk stats: MultiplayerChunkCache: 200, 200
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: 172.00,64.00,92.00 - World: (172,64,92), Chunk: (at 12,4,12 in 10,5; contains blocks 160,0,80 to 175,255,95), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 298372 game time, 11950 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 26 total; [EntityVillager['Villager'/5, l='MpServer', x=73.50, y=64.00, z=107.69], EntityBat['Bat'/8, l='MpServer', x=82.44, y=39.00, z=105.50], EntityBat['Bat'/9, l='MpServer', x=80.25, y=37.02, z=104.03], EntityChicken['Chicken'/10, l='MpServer', x=106.72, y=68.00, z=38.13], EntityChicken['Chicken'/11, l='MpServer', x=99.28, y=80.00, z=70.50], EntityPlayerSP['Player718'/77, l='MpServer', x=143.26, y=69.00, z=71.55], EntityBat['Bat'/16, l='MpServer', x=127.50, y=56.10, z=47.19], EntityBat['Bat'/17, l='MpServer', x=127.50, y=56.10, z=47.44], EntityBat['Bat'/18, l='MpServer', x=126.41, y=58.10, z=54.69], EntityBat['Bat'/19, l='MpServer', x=125.66, y=61.03, z=64.31], EntityBat['Bat'/20, l='MpServer', x=122.25, y=64.10, z=78.66], EntityBat['Bat'/21, l='MpServer', x=126.72, y=64.10, z=66.59], EntityBat['Bat'/22, l='MpServer', x=116.75, y=65.10, z=83.75], EntityBat['Bat'/23, l='MpServer', x=116.75, y=65.10, z=82.53], EntityBat['Bat'/26, l='MpServer', x=135.44, y=18.10, z=65.94], EntityBat['Bat'/27, l='MpServer', x=166.59, y=33.13, z=22.41], EntitySheep['Sheep'/28, l='MpServer', x=174.91, y=67.00, z=41.91], EntityVillager['Villager'/29, l='MpServer', x=168.53, y=350.83, z=86.41], EntitySheep['Sheep'/30, l='MpServer', x=175.41, y=71.00, z=98.53], EntityBat['Bat'/32, l='MpServer', x=186.47, y=43.56, z=94.53], EntityBat['Bat'/33, l='MpServer', x=182.75, y=40.00, z=95.47], EntitySheep['Sheep'/34, l='MpServer', x=183.16, y=84.00, z=144.06], EntityPig['Pig'/35, l='MpServer', x=198.28, y=70.00, z=19.47], EntitySheep['Sheep'/36, l='MpServer', x=198.97, y=67.00, z=66.94], EntityBat['Bat'/37, l='MpServer', x=195.75, y=36.06, z=90.13], EntityVillager['Villager'/38, l='MpServer', x=206.69, y=80.00, z=111.91]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:392)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2614)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:398)
+	at net.minecraft.client.main.Main.main(Main.java:117)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 8.1 (amd64) version 6.3
+	Java Version: 1.8.0_05, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 581322616 bytes (554 MB) / 1038876672 bytes (990 MB) up to 1038876672 bytes (990 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP v9.10 FML v8.0.99.99 Minecraft Forge 11.14.4.1577 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8-11.14.4.1577.jar) 
+	UCHIJAAAA	Forge{11.14.4.1577} [Minecraft Forge] (forgeSrc-1.8-11.14.4.1577.jar) 
+	UCHIJAAAA	bjm{1.0} [Briefjoe's Mod] (bin) 
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 355.60' Renderer: 'GeForce GT 720/PCIe/SSE2'
+	Launched Version: 1.8
+	LWJGL: 2.9.1
+	OpenGL: GeForce GT 720/PCIe/SSE2 GL version 4.5.0 NVIDIA 355.60, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)

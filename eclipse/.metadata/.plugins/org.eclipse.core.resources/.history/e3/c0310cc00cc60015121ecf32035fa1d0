@@ -1,0 +1,5 @@
+package com.briefjoe.mod.init.items;
+
+public class BlockCustomBlock {
+
+}

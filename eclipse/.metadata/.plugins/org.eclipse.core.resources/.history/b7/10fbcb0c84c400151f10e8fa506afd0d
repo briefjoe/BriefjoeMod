@@ -1,0 +1,12 @@
+package com.briefjoe.mod.init.blocks;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
+public class BlockArmorFixer extends BlockUtilTile {
+
+	public BlockArmorFixer(Material material) {
+		super(material);
+	}
+
+}

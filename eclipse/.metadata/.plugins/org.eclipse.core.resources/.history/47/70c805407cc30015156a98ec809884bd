@@ -1,0 +1,31 @@
+package com.briefjoe.mod.init.gui.container;
+
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+
+public class ContainerLogPile extends Container{
+		
+	private IInventory LogPileInventorty;
+	
+	public ContainerLogPile(IInventory playerInventory, IInventory logPileInventory){
+		
+		this.LogPileInventorty = logPileInventory;
+		logPileInventory.openInventory(null);
+		
+		for (int i = 0; i < 3; i++){
+			
+			this.addSlotToContainer(new SlotLogPile(logPileInventory, i, i * 18 + 53, 17));
+		}
+		
+		for (int i = 0; i < 3; i++){
+			
+			for (int j = 0; j < 9; ++j){
+				
+				this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, j * 18 + 8, i * 18 + 86));
+				
+			}
+		}
+		
+	}
+}

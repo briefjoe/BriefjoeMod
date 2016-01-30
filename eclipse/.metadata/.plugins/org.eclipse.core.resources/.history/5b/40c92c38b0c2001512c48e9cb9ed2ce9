@@ -1,0 +1,43 @@
+package com.briefjoe.mod.event;
+
+import com.briefjoe.mod.init.items.BriefjoeItems;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityLockable;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+public class KeyEvents {
+	
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void onPlayerInteract(PlayerInteractEvent event){
+		
+		if(event.action == Action.RIGHT_CLICK_BLOCK){
+			World world = event.world;
+			BlockPos pos = event.pos;
+			
+			TileEntity tileEntity = world.getTileEntity(pos);
+			if(tileEntity instanceof TileEntityLockable){
+				TileEntityLockable tileEntityLockable = (TileEntityLockable) tileEntity;
+				EntityPlayer player = event.entityPlayer;
+				ItemStack current = player.getCurrentEquippedItem();
+				
+				if(tileEntityLockable.isLocked()){
+					if(current != null && current.getItem() == BriefjoeItems.key_chain){
+						if(!tileEntityLockable.getLockCode().getLock().equals(current.getDisplayName())){
+							world.playSoundAtEntity(player, "fire.ignite", 1.0F, 1.0F);
+							setSpecialMessage(world, player, EnumChatFormatting.YELLOW + "This is the wrong key");
+						}
+					}
+				}
+			}
+		}
+	}
+}

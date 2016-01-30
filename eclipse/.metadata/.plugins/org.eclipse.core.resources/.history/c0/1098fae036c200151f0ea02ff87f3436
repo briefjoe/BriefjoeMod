@@ -1,0 +1,51 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
+public class EntityTestCar extends Entity{
+
+	public EntityTestCar(World worldIn, double p_i1705_2_, double p_i1705_4_, double p_i1705_6_) {
+		 super(worldIn);
+	        this.setPosition(p_i1705_2_, p_i1705_4_, p_i1705_6_);
+	        this.motionX = 0.0D;
+	        this.motionY = 0.0D;
+	        this.motionZ = 0.0D;
+	        this.prevPosX = p_i1705_2_;
+	        this.prevPosY = p_i1705_4_;
+	        this.prevPosZ = p_i1705_6_;
+	}
+	
+	/**
+     * Returns true if other Entities should be prevented from moving through this Entity.
+     */
+    public boolean canBeCollidedWith()
+    {
+        return true;
+    }
+
+    /**
+     * Returns true if this entity should push and be pushed by other entities when colliding.
+     */
+    public boolean canBePushed()
+    {
+        return false;
+    }
+    
+	@Override
+	protected void entityInit() {
+		
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+		
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+		
+	}
+
+}

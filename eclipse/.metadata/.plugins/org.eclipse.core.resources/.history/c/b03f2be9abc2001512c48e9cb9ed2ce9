@@ -1,0 +1,5 @@
+package com.briefjoe.mod.util;
+
+public class LockedDoorData {
+
+}

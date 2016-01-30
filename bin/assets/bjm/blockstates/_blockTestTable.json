@@ -1,0 +1,8 @@
+{
+"variants": {
+"facing=north": {"model": "bjm:plate", "y": 270},
+"facing=south": { "model": "bjm:plate", "y": 90},
+"facing=east": { "model": "bjm:plate"},
+"facing=west": { "model": "bjm:plate", "y": 180}
+}
+}

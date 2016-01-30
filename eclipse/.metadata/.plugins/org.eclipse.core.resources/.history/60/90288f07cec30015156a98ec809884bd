@@ -1,0 +1,5 @@
+package com.briefjoe.mod.init.blocks;
+
+public class TileEntityWashingMachine {
+
+}

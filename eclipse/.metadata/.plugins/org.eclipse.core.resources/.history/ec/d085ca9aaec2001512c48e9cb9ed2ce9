@@ -1,0 +1,11 @@
+package com.briefjoe.mod.init.gui.slots;
+
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+
+public class SlotKeyChain extends Slot{
+	
+	public SlotKeyChain(IInventory inventoryIn, int index, int xPosition, int yPosition){
+		super(inventoryIn, index, xPosition, yPosition);
+	}
+}

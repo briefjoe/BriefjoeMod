@@ -1,0 +1,5 @@
+package com.briefjoe.mod.init.gui.inventory;
+
+public class InventoryKeyNamer {
+
+}

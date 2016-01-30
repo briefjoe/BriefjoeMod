@@ -1,0 +1,12 @@
+package com.briefjoe.mod.init.items;
+
+import net.minecraft.item.Item;
+
+public class ItemKeyNamer extends Item {
+	
+	public ItemKeyNamer() 
+	{
+		setMaxStackSize(1);
+	}
+	
+}

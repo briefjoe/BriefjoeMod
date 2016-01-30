@@ -1,0 +1,93 @@
+package com.briefjoe.mod.init.tileentity;
+
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
+
+public class TileEntityLogPile extends TileEntity implements IInventory{
+	
+	private ItemStack[] logPileLogs = new ItemStack[4];
+	private String customName;
+	
+	public int getSizeInventory(){
+		return 4;
+	}
+	
+	@Override
+	public ItemStack getStackInSlot(int par1){
+		return this.logPileLogs[par1];
+	}
+	
+	@Override
+	public ItemStack decrStackSize(int par1, int par2){
+		if (this.logPileLogs[par1] !=null){
+			
+			ItemStack var3;
+			
+			if(this.logPileLogs[par1].stackSize <= par2){
+				
+				var3 = this.logPileLogs[par1];
+				this.markDirty();
+				return var3;
+			}
+			
+			var3 = this.logPileLogs[par1].splitStack(par2);
+			
+			if(this.logPileLogs[par1].stackSize == 0){
+				
+				this.logPileLogs[par1] = null;
+				
+			}
+			
+			this.markDirty();
+		}
+		return null;
+	}
+	
+	@Override
+	public void setInventorySlotContents(int par1, ItemStack par2ItemStack){
+		this.logPileLogs[par1] = par2ItemStack;
+		
+		if(par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit()){
+			
+			par2ItemStack.stackSize = this.getInvenroryStackLimit;
+			
+		}
+		
+		this.markDirty();
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound){
+		
+		super.readFromNBT(par1NBTTagCompound);
+		NBTTagList var2 = (NBTTagList) par1NBTTagCompound.getTag("logs");
+		this.logPileLogs = new ItemStack[this.getSizeInventory()];
+		
+		for(int var3 = 0; var3 < var2.tagCount(); ++var3){
+			
+			NBTTagCompound var4 = (NBTTagCompound) var2.getCompoundTagAt(var3);
+			int var5 = var4.getByte("logs") & 255;
+			
+			if(var5 >= 0 && var5 < this.logPileLogs.length){
+				
+				this.logPileLogs[var5] = ItemStack.loadItemStackFromNBT(var4);
+			}
+		}
+	}
+	
+	
+	@Override
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
+		
+		super.writeToNBT(par1NBTTagCompound);
+		NBTTagList var2 = new NBTTagList();
+		
+		for(int var3 = 0; var3 < this.logPileLogs.length; ++var3){
+			
+			
+		}
+	}
+}

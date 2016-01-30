@@ -1,0 +1,109 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class EntityCar extends Entity{
+
+	 private boolean isInReverse;
+	    private String entityName;
+	    /** rotational logic matrix */
+	    private static final int[][][] matrix = new int[][][] {{{0, 0, -1}, {0, 0, 1}}, {{ -1, 0, 0}, {1, 0, 0}}, {{ -1, -1, 0}, {1, 0, 0}}, {{ -1, 0, 0}, {1, -1, 0}}, {{0, 0, -1}, {0, -1, 1}}, {{0, -1, -1}, {0, 0, 1}}, {{0, 0, 1}, {1, 0, 0}}, {{0, 0, 1}, { -1, 0, 0}}, {{0, 0, -1}, { -1, 0, 0}}, {{0, 0, -1}, {1, 0, 0}}};
+	    /** appears to be the progress of the turn */
+	    private int turnProgress;
+	    private double carX;
+	    private double carY;
+	    private double carZ;
+	    private double carYaw;
+	    private double carPitch;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityX;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityY;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityZ;
+	    
+	    public static float defaultMaxSpeedAirLateral = 0.4f;
+	    public static float defaultMaxSpeedAirVertical = -1f;
+	    public static double defaultDragAir = 0.94999998807907104D;
+	    protected boolean canBePushed = true;
+	    
+	    protected float maxSpeedAirLateral = defaultMaxSpeedAirLateral;
+	    protected float maxSpeedAirVertical = defaultMaxSpeedAirVertical;
+	    protected double dragAir = defaultDragAir;
+
+	    
+	public EntityCar(World worldIn) {
+		super(worldIn);
+		this.preventEntitySpawning = true;
+        this.setSize(0.98F, 0.7F);
+	}
+
+	protected boolean canTriggerWalking()
+    {
+        return false;
+    }
+	
+
+    protected void entityInit()
+    {
+        this.dataWatcher.addObject(17, new Integer(0));
+        this.dataWatcher.addObject(18, new Integer(1));
+        this.dataWatcher.addObject(19, new Float(0.0F));
+        this.dataWatcher.addObject(20, new Integer(0));
+        this.dataWatcher.addObject(21, new Integer(6));
+        this.dataWatcher.addObject(22, Byte.valueOf((byte)0));
+    }
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+		
+		
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+		
+		
+	}
+	
+	public boolean canBePushed()
+    {
+        return false;
+    }
+
+    public EntityCar(World worldIn, double p_i1713_2_, double p_i1713_4_, double p_i1713_6_)
+    {
+        this(worldIn);
+        this.setPosition(p_i1713_2_, p_i1713_4_, p_i1713_6_);
+        this.motionX = 0.0D;
+        this.motionY = 0.0D;
+        this.motionZ = 0.0D;
+        this.prevPosX = p_i1713_2_;
+        this.prevPosY = p_i1713_4_;
+        this.prevPosZ = p_i1713_6_;
+    }
+	
+	  public AxisAlignedBB getCollisionBox(Entity entityIn)
+	  {
+	        if (getCollisionHandler() != null) return getCollisionHandler().getCollisionBox(this, entityIn);
+	        return entityIn.canBePushed() ? entityIn.getEntityBoundingBox() : null;
+	  }
+	  
+	  
+	  public double getMountedYOffset()
+	  {
+		  return (double)this.height * 0.5D - 0.20000000298023224D;
+	  }
+	  
+	  
+	  private Object getCollisionHandler() {
+		  // TODO Auto-generated method stub
+		  return null;
+	  }
+
+}

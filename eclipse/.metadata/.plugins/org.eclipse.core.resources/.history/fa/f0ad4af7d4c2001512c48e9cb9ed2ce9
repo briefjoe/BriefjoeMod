@@ -1,0 +1,224 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class EntitySkateboard extends Entity {
+	public EnumFacing prevFacing = null;
+
+	public double currentSpeed = 0.0;
+	public double maxSpeed = 8.0;
+	private boolean allowOnce = false;
+
+	private boolean pushed = false;
+	private int rotation;
+
+	@SideOnly(Side.CLIENT)
+	private double velocityX;
+	@SideOnly(Side.CLIENT)
+	private double velocityY;
+	@SideOnly(Side.CLIENT)
+	private double velocityZ;
+
+	public EntitySkateboard(World worldIn) {
+		super(worldIn);
+		this.preventEntitySpawning = true;
+		this.setSize(1.0F, 0.5F);
+	}
+
+	public EntitySkateboard(World worldIn, double x, double y, double z) {
+		this(worldIn);
+		this.setPosition(x, y, z);
+		this.prevPosX = x;
+		this.prevPosY = y;
+		this.prevPosZ = z;
+	}
+
+	@Override
+	protected boolean canTriggerWalking() {
+		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean shouldRiderSit() {
+		return true;
+	}
+
+	@Override
+	public boolean isRiding() {
+		return this.ridingEntity != null;
+	}
+
+	@Override
+	protected void entityInit() {
+
+	}
+
+	@Override
+	public double getMountedYOffset() {
+		return 0.5F;
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBox(Entity entityIn) {
+		return entityIn.getEntityBoundingBox();
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox() {
+		return this.getEntityBoundingBox();
+	}
+
+	@Override
+	public boolean canBePushed() {
+		return false;
+	}
+
+	@Override
+	public boolean canBeCollidedWith() {
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void func_180426_a(double p_180426_1_, double p_180426_3_, double p_180426_5_, float p_180426_7_,
+			float p_180426_8_, int p_180426_9_, boolean p_180426_10_) {
+		if (this.riddenByEntity != null) {
+			this.prevPosX = this.posX = p_180426_1_;
+			this.prevPosY = this.posY = p_180426_3_;
+			this.prevPosZ = this.posZ = p_180426_5_;
+			this.rotationYaw = p_180426_7_;
+			this.rotationPitch = p_180426_8_;
+			this.setPosition(p_180426_1_, p_180426_3_, p_180426_5_);
+			this.motionX = this.velocityX = 0.0D;
+			this.motionY = this.velocityY = 0.0D;
+			this.motionZ = this.velocityZ = 0.0D;
+		} else {
+			this.motionX = this.velocityX;
+			this.motionY = this.velocityY;
+			this.motionZ = this.velocityZ;
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void setVelocity(double x, double y, double z) {
+		this.velocityX = this.motionX = x;
+		this.velocityY = this.motionY = y;
+		this.velocityZ = this.motionZ = z;
+	}
+
+	private int life;
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+
+		/** Will only execute code if player is riding skateboard */
+		if (this.riddenByEntity instanceof EntityLivingBase) {
+			EntityLivingBase entity = (EntityLivingBase) this.riddenByEntity;
+
+			/** Handles pushing */
+
+			this.motionY -= 0.08D;
+
+			this.moveEntity(this.motionX, this.motionY, this.motionZ);
+
+			if (this.riddenByEntity != null) {
+
+			}
+		}
+
+	}
+
+	public void onUpdateServer() {
+		life++;
+		if (life >= 10000) {
+			this.setDead();
+		}
+	}
+
+	@Override
+	public void updateRiderPosition() {
+		if (this.riddenByEntity != null) {
+			if (this.riddenByEntity instanceof EntityLivingBase) {
+				((EntityLivingBase) this.riddenByEntity).renderYawOffset = this.rotationYaw;
+			}
+		}
+	}
+
+	@Override
+	public boolean interactFirst(EntityPlayer playerIn) {
+		if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer
+				&& this.riddenByEntity != playerIn) {
+			return true;
+		} else {
+			if (!this.worldObj.isRemote) {
+				playerIn.mountEntity(this);
+			}
+
+			return true;
+		}
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+
+	}
+
+	public int getDifferenceWithFix(int initAngle, int newAngle) {
+		if (initAngle == 0 && newAngle == 270) {
+			return 90;
+		}
+		if (initAngle == 270 && newAngle == 0) {
+			return -90;
+		}
+		return initAngle - newAngle;
+	}
+
+	public void performStack() {
+		if (!worldObj.isRemote && riddenByEntity != null) {
+			// riddenByEntity.attackEntityFrom(MrCrayfishSkateboardingMod.skateboardDamage,
+			// 2);
+			if (riddenByEntity instanceof EntityLivingBase) {
+				((EntityLivingBase) riddenByEntity).mountEntity((Entity) null);
+			}
+		}
+	}
+
+	private float interpolateRotation(float start, float end) {
+		float f3;
+
+		for (f3 = end - start; f3 < -180.0F; f3 += 360.0F) {
+			;
+		}
+
+		while (f3 >= 180.0F) {
+			f3 -= 360.0F;
+		}
+
+		return start + 0.1F * f3;
+	}
+
+	public boolean isPushed() {
+		return pushed;
+	}
+
+	public void setPushed(boolean pushed) {
+		this.pushed = pushed;
+	}
+}

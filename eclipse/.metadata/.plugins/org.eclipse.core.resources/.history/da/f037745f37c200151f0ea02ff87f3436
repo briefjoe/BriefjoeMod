@@ -1,0 +1,122 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class EntityTestCar extends Entity{
+
+    private boolean isCarEmpty;
+    private double speedMultiplier;
+    private int CarPosRotationIncrements;
+    private double carX;
+    private double carY;
+    private double carZ;
+    private double carYaw;
+    private double carPitch;
+    @SideOnly(Side.CLIENT)
+    private double velocityX;
+    @SideOnly(Side.CLIENT)
+    private double velocityY;
+    @SideOnly(Side.CLIENT)
+    private double velocityZ;
+	
+	public EntityTestCar(World worldIn, double p_i1705_2_, double p_i1705_4_, double p_i1705_6_) {
+		 super(worldIn);
+	        this.setPosition(p_i1705_2_, p_i1705_4_, p_i1705_6_);
+	        this.motionX = 0.0D;
+	        this.motionY = 0.0D;
+	        this.motionZ = 0.0D;
+	        this.prevPosX = p_i1705_2_;
+	        this.prevPosY = p_i1705_4_;
+	        this.prevPosZ = p_i1705_6_;
+	}
+	
+	 public double getMountedYOffset()
+	    {
+	        return (double)this.height * 0.0D - 0.30000001192092896D;
+	    }
+
+	
+	/**
+     * Returns true if other Entities should be prevented from moving through this Entity.
+     */
+    public boolean canBeCollidedWith()
+    {
+        return true;
+    }
+
+    /**
+     * Returns true if this entity should push and be pushed by other entities when colliding.
+     */
+    public boolean canBePushed()
+    {
+        return false;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public void func_180426_a(double p_180426_1_, double p_180426_3_, double p_180426_5_, float p_180426_7_, float p_180426_8_, int p_180426_9_, boolean p_180426_10_)
+    {
+        if (p_180426_10_ && this.riddenByEntity != null)
+        {
+            this.prevPosX = this.posX = p_180426_1_;
+            this.prevPosY = this.posY = p_180426_3_;
+            this.prevPosZ = this.posZ = p_180426_5_;
+            this.rotationYaw = p_180426_7_;
+            this.rotationPitch = p_180426_8_;
+            this.CarPosRotationIncrements = 0;
+            this.setPosition(p_180426_1_, p_180426_3_, p_180426_5_);
+            this.motionX = this.velocityX = 0.0D;
+            this.motionY = this.velocityY = 0.0D;
+            this.motionZ = this.velocityZ = 0.0D;
+        }
+        else
+        {
+            if (this.isCarEmpty)
+            {
+                this.CarPosRotationIncrements = p_180426_9_ + 5;
+            }
+            else
+            {
+                double d3 = p_180426_1_ - this.posX;
+                double d4 = p_180426_3_ - this.posY;
+                double d5 = p_180426_5_ - this.posZ;
+                double d6 = d3 * d3 + d4 * d4 + d5 * d5;
+
+                if (d6 <= 1.0D)
+                {
+                    return;
+                }
+
+                this.CarPosRotationIncrements = 3;
+            }
+
+            this.carX = p_180426_1_;
+            this.carY = p_180426_3_;
+            this.carZ = p_180426_5_;
+            this.carYaw = (double)p_180426_7_;
+            this.carPitch = (double)p_180426_8_;
+            this.motionX = this.velocityX;
+            this.motionY = this.velocityY;
+            this.motionZ = this.velocityZ;
+        }
+    }
+    
+	@Override
+	protected void entityInit() {
+		
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+		
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+		
+	}
+
+}

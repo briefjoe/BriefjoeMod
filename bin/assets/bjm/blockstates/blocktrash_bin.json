@@ -1,0 +1,8 @@
+{
+"variants": {
+"facing=north": {"model": "bjm:blocktrash_bin", "y": 270},
+"facing=south": { "model": "bjm:blocktrash_bin", "y": 90},
+"facing=east": { "model": "bjm:blocktrash_bin"},
+"facing=west": { "model": "bjm:blocktrash_bin", "y": 180}
+}
+}

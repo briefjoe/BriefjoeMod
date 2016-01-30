@@ -1,0 +1,13 @@
+package com.briefjoe.mod.util;
+
+public class SyncEvent {
+	
+	@SubscribeEvent
+	public void onPlayerLogin(PlayerLoggedInEvent event)
+	{
+		if (MrCrayfishFurnitureMod.proxy.isDedicatedServer())
+		{
+			PacketHandler.INSTANCE.sendTo(new MessageConfig(), (EntityPlayerMP) event.player);
+		}
+	}
+}

@@ -1,0 +1,357 @@
+package com.briefjoe.mod.init.entity;
+
+import java.util.Iterator;
+
+import net.minecraft.block.BlockRailBase;
+import net.minecraft.block.BlockRailPowered;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class EntityCar extends Entity{
+
+	 private boolean isInReverse;
+	    private String entityName;
+	    /** rotational logic matrix */
+	    private static final int[][][] matrix = new int[][][] {{{0, 0, -1}, {0, 0, 1}}, {{ -1, 0, 0}, {1, 0, 0}}, {{ -1, -1, 0}, {1, 0, 0}}, {{ -1, 0, 0}, {1, -1, 0}}, {{0, 0, -1}, {0, -1, 1}}, {{0, -1, -1}, {0, 0, 1}}, {{0, 0, 1}, {1, 0, 0}}, {{0, 0, 1}, { -1, 0, 0}}, {{0, 0, -1}, { -1, 0, 0}}, {{0, 0, -1}, {1, 0, 0}}};
+	    /** appears to be the progress of the turn */
+	    private int turnProgress;
+	    private double carX;
+	    private double carY;
+	    private double carZ;
+	    private double carYaw;
+	    private double carPitch;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityX;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityY;
+	    @SideOnly(Side.CLIENT)
+	    private double velocityZ;
+	    
+	    public static float defaultMaxSpeedAirLateral = 0.4f;
+	    public static float defaultMaxSpeedAirVertical = -1f;
+	    public static double defaultDragAir = 0.94999998807907104D;
+	    protected boolean canBePushed = true;
+	    
+	    protected float maxSpeedAirLateral = defaultMaxSpeedAirLateral;
+	    protected float maxSpeedAirVertical = defaultMaxSpeedAirVertical;
+	    protected double dragAir = defaultDragAir;
+
+	    
+	public EntityCar(World worldIn) {
+		super(worldIn);
+		this.preventEntitySpawning = true;
+        this.setSize(0.98F, 0.7F);
+	}
+
+	protected boolean canTriggerWalking()
+    {
+        return false;
+    }
+	
+
+    protected void entityInit()
+    {
+        this.dataWatcher.addObject(17, new Integer(0));
+        this.dataWatcher.addObject(18, new Integer(1));
+        this.dataWatcher.addObject(19, new Float(0.0F));
+        this.dataWatcher.addObject(20, new Integer(0));
+        this.dataWatcher.addObject(21, new Integer(6));
+        this.dataWatcher.addObject(22, Byte.valueOf((byte)0));
+    }
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tagCompund) {
+		
+		
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+		
+		
+	}
+	
+	public boolean canBePushed()
+    {
+        return false;
+    }
+
+    public EntityCar(World worldIn, double p_i1713_2_, double p_i1713_4_, double p_i1713_6_)
+    {
+        this(worldIn);
+        this.setPosition(p_i1713_2_, p_i1713_4_, p_i1713_6_);
+        this.motionX = 0.0D;
+        this.motionY = 0.0D;
+        this.motionZ = 0.0D;
+        this.prevPosX = p_i1713_2_;
+        this.prevPosY = p_i1713_4_;
+        this.prevPosZ = p_i1713_6_;
+    }
+	
+	  public AxisAlignedBB getCollisionBox(Entity entityIn)
+	  {
+	        if (getCollisionHandler() != null) return getCollisionHandler().getCollisionBox(this, entityIn);
+	        return entityIn.canBePushed() ? entityIn.getEntityBoundingBox() : null;
+	  }
+	  
+	  
+	  public double getMountedYOffset()
+	  {
+		  return (double)this.height * 0.5D - 0.20000000298023224D;
+	  }
+	  
+	  public boolean attackEntityFrom(DamageSource source, float amount)
+	    {
+	        if (!this.worldObj.isRemote && !this.isDead)
+	        {
+	            if (this.isEntityInvulnerable(source))
+	            {
+	                return false;
+	            }
+	            else
+	            {
+	                this.setRollingDirection(-this.getRollingDirection());
+	                this.setRollingAmplitude(10);
+	                this.setBeenAttacked();
+	                this.setDamage(this.getDamage() + amount * 10.0F);
+	                boolean flag = source.getEntity() instanceof EntityPlayer && ((EntityPlayer)source.getEntity()).capabilities.isCreativeMode;
+
+	                if (flag || this.getDamage() > 40.0F)
+	                {
+	                    if (this.riddenByEntity != null)
+	                    {
+	                        this.riddenByEntity.mountEntity((Entity)null);
+	                    }
+
+	                    if (flag && !this.hasCustomName())
+	                    {
+	                        this.setDead();
+	                    }
+	                    else
+	                    {
+	                        this.killMinecart(source);
+	                    }
+	                }
+
+	                return true;
+	            }
+	        }
+	        else
+	        {
+	            return true;
+	        }
+	    }
+
+	    public void killMinecart(DamageSource p_94095_1_)
+	    {
+	        this.setDead();
+	        ItemStack itemstack = new ItemStack(Items.minecart, 1);
+
+	        if (this.entityName != null)
+	        {
+	            itemstack.setStackDisplayName(this.entityName);
+	        }
+
+	        this.entityDropItem(itemstack, 0.0F);
+	    }
+	    
+	    public boolean canBeCollidedWith()
+	    {
+	        return !this.isDead;
+	    }
+
+	    /**
+	     * Will get destroyed next tick.
+	     */
+	    public void setDead()
+	    {
+	        super.setDead();
+	    }
+
+	    /**
+	     * Called to update the entity's position/logic.
+	     */
+	    public void onUpdate()
+	    {
+	        if (this.getRollingAmplitude() > 0)
+	        {
+	            this.setRollingAmplitude(this.getRollingAmplitude() - 1);
+	        }
+
+	        if (this.getDamage() > 0.0F)
+	        {
+	            this.setDamage(this.getDamage() - 1.0F);
+	        }
+
+	        if (this.posY < -64.0D)
+	        {
+	            this.kill();
+	        }
+
+	        int i;
+
+	        if (!this.worldObj.isRemote && this.worldObj instanceof WorldServer)
+	        {
+	            this.worldObj.theProfiler.startSection("portal");
+	            MinecraftServer minecraftserver = ((WorldServer)this.worldObj).getMinecraftServer();
+	            i = this.getMaxInPortalTime();
+
+	            if (this.inPortal)
+	            {
+	                if (minecraftserver.getAllowNether())
+	                {
+	                    if (this.ridingEntity == null && this.portalCounter++ >= i)
+	                    {
+	                        this.portalCounter = i;
+	                        this.timeUntilPortal = this.getPortalCooldown();
+	                        byte b0;
+
+	                        if (this.worldObj.provider.getDimensionId() == -1)
+	                        {
+	                            b0 = 0;
+	                        }
+	                        else
+	                        {
+	                            b0 = -1;
+	                        }
+
+	                        this.travelToDimension(b0);
+	                    }
+
+	                    this.inPortal = false;
+	                }
+	            }
+	            else
+	            {
+	                if (this.portalCounter > 0)
+	                {
+	                    this.portalCounter -= 4;
+	                }
+
+	                if (this.portalCounter < 0)
+	                {
+	                    this.portalCounter = 0;
+	                }
+	            }
+
+	            if (this.timeUntilPortal > 0)
+	            {
+	                --this.timeUntilPortal;
+	            }
+
+	            this.worldObj.theProfiler.endSection();
+	        }
+
+	        if (this.worldObj.isRemote)
+	        {
+	            if (this.turnProgress > 0)
+	            {
+	                double d4 = this.posX + (this.carX - this.posX) / (double)this.turnProgress;
+	                double d5 = this.posY + (this.carY - this.posY) / (double)this.turnProgress;
+	                double d6 = this.posZ + (this.carZ - this.posZ) / (double)this.turnProgress;
+	                double d1 = MathHelper.wrapAngleTo180_double(this.carYaw - (double)this.rotationYaw);
+	                this.rotationYaw = (float)((double)this.rotationYaw + d1 / (double)this.turnProgress);
+	                this.rotationPitch = (float)((double)this.rotationPitch + (this.carPitch - (double)this.rotationPitch) / (double)this.turnProgress);
+	                --this.turnProgress;
+	                this.setPosition(d4, d5, d6);
+	                this.setRotation(this.rotationYaw, this.rotationPitch);
+	            }
+	            else
+	            {
+	                this.setPosition(this.posX, this.posY, this.posZ);
+	                this.setRotation(this.rotationYaw, this.rotationPitch);
+	            }
+	        }
+	        else
+	        {
+	            this.prevPosX = this.posX;
+	            this.prevPosY = this.posY;
+	            this.prevPosZ = this.posZ;
+	            this.motionY -= 0.03999999910593033D;
+	            int j = MathHelper.floor_double(this.posX);
+	            i = MathHelper.floor_double(this.posY);
+	            int k = MathHelper.floor_double(this.posZ);
+
+	            if (BlockRailBase.isRailBlock(this.worldObj, new BlockPos(j, i - 1, k)))
+	            {
+	                --i;
+	            }
+
+	            BlockPos blockpos = new BlockPos(j, i, k);
+	            IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
+
+	            this.doBlockCollisions();
+	            this.rotationPitch = 0.0F;
+	            double d0 = this.prevPosX - this.posX;
+	            double d2 = this.prevPosZ - this.posZ;
+
+	            if (d0 * d0 + d2 * d2 > 0.001D)
+	            {
+	                this.rotationYaw = (float)(Math.atan2(d2, d0) * 180.0D / Math.PI);
+
+	                if (this.isInReverse)
+	                {
+	                    this.rotationYaw += 180.0F;
+	                }
+	            }
+
+	            double d3 = (double)MathHelper.wrapAngleTo180_float(this.rotationYaw - this.prevRotationYaw);
+
+	            if (d3 < -170.0D || d3 >= 170.0D)
+	            {
+	                this.rotationYaw += 180.0F;
+	                this.isInReverse = !this.isInReverse;
+	            }
+
+	            this.setRotation(this.rotationYaw, this.rotationPitch);
+	            AxisAlignedBB box;
+	            if (getCollisionHandler() != null) box = this.getCollisionHandler().getMinecartCollisionBox(this);
+	            else                               box = this.getEntityBoundingBox().expand(0.20000000298023224D, 0.0D, 0.20000000298023224D);
+	            Iterator iterator = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, box).iterator();
+
+	            while (iterator.hasNext())
+	            {
+	                Entity entity = (Entity)iterator.next();
+
+	                if (entity != this.riddenByEntity && entity.canBePushed() && entity instanceof EntityMinecart)
+	                {
+	                    entity.applyEntityCollision(this);
+	                }
+	            }
+
+	            if (this.riddenByEntity != null && this.riddenByEntity.isDead)
+	            {
+	                if (this.riddenByEntity.ridingEntity == this)
+	                {
+	                    this.riddenByEntity.ridingEntity = null;
+	                }
+
+	                this.riddenByEntity = null;
+	            }
+
+	            this.handleWaterMovement();
+	        }
+	    }
+
+	  
+	  private Object getCollisionHandler() {
+		  // TODO Auto-generated method stub
+		  return null;
+	  }
+
+}

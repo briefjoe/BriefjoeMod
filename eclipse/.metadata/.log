@@ -1,0 +1,656 @@
+!SESSION 2015-12-25 12:22:13.471 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-12-25 12:22:32.506
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.core 4 4 2015-12-25 12:22:32.653
+!MESSAGE Error while processing external folders
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/.org.eclipse.jdt.core.external.folders' already exists.
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:313)
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:300)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:51)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:268)
+	at org.eclipse.jdt.internal.core.ExternalFoldersManager.createExternalFoldersProject(ExternalFoldersManager.java:318)
+	at org.eclipse.jdt.internal.core.ExternalFoldersManager.createExternalFoldersProject(ExternalFoldersManager.java:260)
+	at org.eclipse.jdt.internal.core.ExternalFoldersManager.createPendingFolders(ExternalFoldersManager.java:188)
+	at org.eclipse.jdt.core.JavaCore.initializeAfterLoad(JavaCore.java:4125)
+	at org.eclipse.jdt.internal.ui.InitializeAfterLoadJob$RealJob.run(InitializeAfterLoadJob.java:36)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.resources 4 374 2015-12-25 12:22:32.654
+!MESSAGE Resource '/.org.eclipse.jdt.core.external.folders' already exists.
+
+!ENTRY org.eclipse.debug.core 4 120 2015-12-25 12:22:50.969
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-12-25 13:30:40.899
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-16 11:33:26.146 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-16 11:33:40.105
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-16 11:33:57.020
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.ds 2 0 2016-01-16 11:34:05.690
+!MESSAGE Getting a lock required more than 10000 ms. There might be a synchronization problem in this callstack or just the build/dispose process of some components took too long! 
+!STACK 0
+java.lang.Exception: Debug stacktrace
+	at org.eclipse.equinox.internal.ds.InstanceProcess.getLock(InstanceProcess.java:120)
+	at org.eclipse.equinox.internal.ds.InstanceProcess.buildComponent(InstanceProcess.java:560)
+	at org.eclipse.equinox.internal.ds.ServiceReg.getService(ServiceReg.java:53)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceFactoryUse$1.run(ServiceFactoryUse.java:212)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceFactoryUse.factoryGetService(ServiceFactoryUse.java:210)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceFactoryUse.getService(ServiceFactoryUse.java:111)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceConsumer$2.getService(ServiceConsumer.java:45)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:496)
+	at org.eclipse.osgi.internal.serviceregistry.ServiceRegistry.getService(ServiceRegistry.java:461)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.getService(BundleContextImpl.java:619)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.addingService(ProvisioningAgent.java:159)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:941)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:1)
+	at org.osgi.util.tracker.AbstractTracked.trackAdding(AbstractTracked.java:256)
+	at org.osgi.util.tracker.AbstractTracked.trackInitial(AbstractTracked.java:183)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:318)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:261)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.getService(ProvisioningAgent.java:66)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.<clinit>(SetupCoreUtil.java:96)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:382)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-01-16 18:18:54.501 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-16 18:19:04.170
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-16 20:26:37.684
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-16 20:32:32.126 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-16 20:32:34.946
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-16 20:32:40.455
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2016-01-19 16:06:21.250 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-19 16:06:39.207
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-19 16:45:58.724
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-19 16:47:57.356
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-19 16:55:44.967
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-19 16:55:48.153
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-19 17:43:36.527
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-19 19:33:52.621
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-19 21:11:52.645
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-20 15:16:22.389 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-20 15:16:27.273
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-20 15:16:42.744
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2016-01-21 15:26:17.913 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-21 15:26:29.322
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-21 22:03:40.344
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-22 15:18:07.250 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-22 15:18:24.660
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-22 15:19:46.783
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-22 18:56:14.296
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-22 21:35:15.090
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-22 21:40:21.758
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-22 21:41:18.198
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-22 21:42:02.531
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-22 23:09:21.725
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-23 08:20:03.184 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-23 08:20:05.981
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-23 08:20:49.524
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-23 12:55:18.972
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-23 13:29:29.519
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:47:55.701
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/IRecipeRegistry.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-23 14:48:07.520
+!MESSAGE The workspace will exit with unsaved changes in this session.
+
+!ENTRY org.eclipse.core.resources 4 566 2016-01-23 14:48:07.523
+!MESSAGE Workspace was not properly initialized or has already shutdown.
+
+!ENTRY org.eclipse.core.jobs 4 1 2016-01-23 14:48:07.524
+!MESSAGE Worker thread ended job: Refreshing workspace(10), but still holds rule: ThreadJob(Refreshing workspace(10),[F/MDKExample/eclipse/.metadata/.plugins/org.eclipse.core.resources/.history])
+!SESSION 2016-01-23 14:48:09.902 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-23 14:48:13.243
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-23 14:48:20.545
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.604
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/Parser.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.657
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeAPI.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.725
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeConditions.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.778
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeData.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.830
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeRegistry.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.886
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeRegistryComm.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.939
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeRegistryRemote.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:56.992
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeType.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.046
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeUtil.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.098
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeVariables.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.151
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/Recipes.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.202
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeRegistryComm.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.253
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/Recipes.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.305
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/Parser.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.357
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeRegistry.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.408
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeAPI.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.458
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeType.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.509
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/IRecipeRegistry.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.613
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeConditions.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.663
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeVariables.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.714
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeData.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.765
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeRegistryRemote.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.jdt.core 2 0 2016-01-23 14:49:57.817
+!MESSAGE The Java indexing could not index /MDKExample/src/main/java/com/briefjoe/mod/api/RecipeUtil.class. This .class file doesn't follow the class file format specification. Please report this issue against the .class file vendor
+
+!ENTRY org.eclipse.recommenders.rcp 2 15 2016-01-23 19:35:45.592
+!MESSAGE Failed to parse news feed
+!STACK 0
+java.net.SocketException: Network is unreachable: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.getRSSFeed(CheckForProjectNewsJob.java:138)
+	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.doRun(CheckForProjectNewsJob.java:89)
+	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.run(CheckForProjectNewsJob.java:62)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-01-24 09:49:02.386 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-24 09:49:17.275
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2016-01-24 14:54:15.616
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [handleLanding() [in EntitySkateboard [in [Working copy] EntitySkateboard.java [in com.briefjoe.mod.init.entity [in src/main/java [in MDKExample]]]]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:556)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:590)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.SourceRefElement.getSourceRange(SourceRefElement.java:218)
+	at org.eclipse.jdt.internal.core.Member.getJavadocRange(Member.java:291)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContentFromSource(JavadocContentAccess2.java:653)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:529)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:721)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:639)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:631)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:85)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-01-24 14:54:15.617
+!MESSAGE handleLanding() [in EntitySkateboard [in [Working copy] EntitySkateboard.java [in com.briefjoe.mod.init.entity [in src/main/java [in MDKExample]]]]] does not exist
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-24 18:22:23.945
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-24 18:24:12.824
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-24 19:03:00.934
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-24 19:09:27.378
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 4 566 2016-01-24 21:06:21.475
+!MESSAGE Workspace was not properly initialized or has already shutdown.
+
+!ENTRY org.eclipse.core.jobs 4 1 2016-01-24 21:06:21.476
+!MESSAGE Worker thread ended job: Refreshing workspace(10), but still holds rule: ThreadJob(Refreshing workspace(10),[F/MDKExample/eclipse/.metadata/.plugins])
+!SESSION 2016-01-25 07:46:21.576 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-25 07:48:06.610
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-25 17:42:46.503
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-25 17:57:43.762
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-25 18:33:17.338
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-25 18:41:52.471
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-25 20:43:34.281
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-26 15:14:07.002 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-26 15:14:12.506
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-26 15:15:14.765
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-26 20:50:19.556
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-27 15:17:28.560 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-27 15:17:45.259
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-27 15:18:29.511
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-27 15:39:25.382
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-27 15:53:18.227
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-27 18:20:31.499
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-27 18:30:16.342 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-27 18:30:25.645
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-27 18:30:35.096
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-27 18:52:11.773
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-27 18:56:25.982
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-27 20:33:31.262
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-27 20:37:39.946
+!MESSAGE Variable references empty selection: ${project_loc}
+!SESSION 2016-01-28 15:11:24.654 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-28 15:12:32.196
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 15:39:34.321
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 15:45:42.977
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 15:53:44.373
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 15:57:59.736
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:01:01.306
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:08:45.756
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:10:47.156
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:16:43.180
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:28:10.956
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:28:12.853
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-28 16:29:16.091
+!MESSAGE Variable references empty selection: ${project_loc}
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-28 18:01:06.433
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-28 20:25:27.108 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-28 20:25:43.362
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-28 20:25:58.151
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-28 20:48:47.041
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-29 22:26:54.790 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-29 22:26:57.601
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-29 22:27:05.652
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-29 23:04:24.107
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-01-30 15:58:56.358 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-30 15:59:08.929
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-30 15:59:34.119
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2016-01-30 16:39:09.999
+!MESSAGE Variable references empty selection: ${project_loc}
+!SESSION 2016-01-30 17:17:13.860 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-01-30 17:17:21.597
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Joseph'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-30 17:20:32.562
+!MESSAGE The workspace will exit with unsaved changes in this session.

@@ -1,0 +1,5 @@
+package com.briefjoe.mod.init.entity;
+
+public class GolemRegistry {
+
+}

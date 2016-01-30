@@ -1,0 +1,7 @@
+package com.briefjoe.mod.init.blocks;
+
+import net.minecraft.block.Block;
+
+public class BlockTable extends Block {
+
+}

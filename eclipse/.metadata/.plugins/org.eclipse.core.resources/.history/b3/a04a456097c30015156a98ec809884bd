@@ -1,0 +1,7 @@
+package com.briefjoe.mod.init.tileentity;
+
+import net.minecraft.tileentity.TileEntity;
+
+public class TileEntityCookieJar extends TileEntity {
+
+}

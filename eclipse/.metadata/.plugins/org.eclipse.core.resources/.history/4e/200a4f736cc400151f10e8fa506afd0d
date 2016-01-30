@@ -1,0 +1,7 @@
+package com.briefjoe.mod.init.gui.slots;
+
+import net.minecraft.inventory.Slot;
+
+public class SlotArmour extends Slot {
+
+}

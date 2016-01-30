@@ -1,0 +1,7 @@
+package com.briefjoe.mod.init.items;
+
+import net.minecraft.item.Item;
+
+public class ItemSkateBoard extends Item {
+
+}

@@ -1,0 +1,25 @@
+package com.briefjoe.mod.init.entity;
+
+import net.minecraft.entity.EntityList;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+public class BriefjoeEntities {
+	
+	public static void preInit(FMLPreInitializationEvent event)
+	{
+		
+	}
+	
+	static int startEntityId = 300;
+	
+	public static int getUniqueEntityId()
+	{
+		do
+		{
+			startEntityId++;
+		}
+		while (EntityList.getStringFromID(startEntityId) != null);
+
+		return startEntityId;
+	}
+}

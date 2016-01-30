@@ -1,0 +1,28 @@
+package com.briefjoe.mod.init.entity;
+
+import com.briefjoe.mod.BriefjoeMod;
+
+import net.minecraft.entity.EntityList;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+public class BriefjoeEntities {
+	
+	public static void preInit(FMLPreInitializationEvent event)
+	{
+		EntityRegistry.registerModEntity(EntityCar.class, "TestCar", 0, BriefjoeMod.class, 80, 3, true);
+	}
+	
+	static int startEntityId = 300;
+	
+	public static int getUniqueEntityId()
+	{
+		do
+		{
+			startEntityId++;
+		}
+		while (EntityList.getStringFromID(startEntityId) != null);
+
+		return startEntityId;
+	}
+}
